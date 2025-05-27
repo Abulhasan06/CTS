@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register for Event</title>
+  <style>
+    form {
+      width: 400px;
+      margin: auto;
+      background: #f4f4f4;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    input, select, textarea {
+      display: block;
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+    }
+    output {
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <form onsubmit="showConfirmation(event)">
+    <h2>Event Registration</h2>
+    <input type="text" name="name" placeholder="Full Name" required autofocus>
+    <input type="email" name="email" placeholder="Email Address" required>
+    <input type="date" name="eventDate" required>
+    <select required>
+      <option value="">Select Event</option>
+      <option value="Music Night">Music Night</option>
+      <option value="Clean Up Drive">Clean Up Drive</option>
+      <option value="Marathon">Marathon</option>
+    </select>
+    <textarea placeholder="Message" required></textarea>
+    <button type="submit">Register</button>
+    <output id="confirmation"></output>
+  </form>
+
+  <script>
+    function showConfirmation(e) {
+      e.preventDefault();
+      document.getElementById("confirmation").textContent = "🎉 Registration successful!";
+    }
+  </script>
+
+</body>
+</html>

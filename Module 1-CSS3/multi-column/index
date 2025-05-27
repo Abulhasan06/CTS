@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Community Bulletin</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <section class="news">
+    <h2>Community Bulletin</h2>
+    <p>
+      The city council has announced new initiatives for park maintenance. 
+      Volunteers are welcome every Saturday. Water conservation awareness 
+      will be raised with school participation. Cultural events are planned 
+      throughout the month. Stay connected with the local library for workshops.
+      This year’s cleanup drive showed excellent results. Recycling bins will 
+      be distributed across the neighborhoods.
+    </p>
+  </section>
+
+</body>
+</html>

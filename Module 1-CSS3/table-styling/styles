@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Styled Events Table</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h2>Event Administration Table</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Event Name</th>
+        <th>Date</th>
+        <th>Location</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Music Night</td>
+        <td>June 5</td>
+        <td>City Hall</td>
+        <td>Confirmed</td>
+      </tr>
+      <tr>
+        <td>Art Expo</td>
+        <td>June 10</td>
+        <td>Community Center</td>
+        <td>Pending</td>
+      </tr>
+      <tr>
+        <td>Food Carnival</td>
+        <td>June 15</td>
+        <td>Central Park</td>
+        <td>Confirmed</td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>

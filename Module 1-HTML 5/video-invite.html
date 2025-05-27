@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Promo Video</title>
+  <style>
+    #message {
+      color: green;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Welcome to the Community Event!</h2>
+
+  <video id="promoVideo" width="640" controls oncanplay="showReadyMessage()">
+    <source src="promo.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <p id="message"></p>
+
+  <form>
+    <label>Your Name: <input type="text" required></label><br><br>
+    <label>Preferred Event: <input type="text" required></label><br><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    function showReadyMessage() {
+      document.getElementById('message').textContent = '🎬 Video ready to play!';
+    }
+
+    window.onbeforeunload = fu

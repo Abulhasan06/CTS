@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Debugging Demo</title>
+  <style>
+    #demoBox {
+      width: 200px;
+      height: 100px;
+      background-color: lightcoral;
+      margin-top: 20px;
+      text-align: center;
+      line-height: 100px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Debugging Example</h2>
+  <button onclick="changeColor()">Change Color</button>
+
+  <div id="demoBox">Box</div>
+
+  <script>
+    function changeColor() {
+      const box = document.getElementById('demoBox');
+      console.log("Before color change:", box.style.backgroundColor);
+      box.style.backgroundColor = "lightblue";
+
+      let testValue = 42;
+      debugger; // Use Chrome DevTools to inspect here
+      testValue += 10;
+      console.log("After increment:", testValue);
+    }
+  </script>
+
+</body>
+</html>

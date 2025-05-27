@@ -1,0 +1,16 @@
+body {
+  background: #e0f7fa url("https://via.placeholder.com/1500x1000") no-repeat center center fixed;
+  background-size: cover;
+  color: rgba(0, 0, 0, 0.8);
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+.section-title {
+  font-size: 36px;
+  text-align: center;
+  color: #ffffff;
+  background: linear-gradient(90deg, #00695c, #26a69a);
+  padding: 20px;
+  border-radius: 5px;
+}

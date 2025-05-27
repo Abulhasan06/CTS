@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Community Event Portal</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #f5f5f5 url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            padding: 20px;
+        }
+
+        nav {
+            background-color: #007BFF;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            margin-right: 15px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        #welcomeBanner {
+            background-color: blue;
+            color: white;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        .highlight {
+            background-color: yellow;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+            text-align: center;
+            padding: 10px;
+        }
+        tr:nth-child(even) {
+            background-color: #eee;
+        }
+        .gallery-img {
+            border: 2px solid #444;
+            width: 100px;
+            height: auto;
+        }
+
+        form {
+            margin: 20px 0;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px;
+        }
+        output {
+            color: green;
+            font-weight: bold;
+        }
+
+        video {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        @media screen and (max-width: 768px) {
+            nav a {
+                display: block;
+                margin-bottom: 10px;
+            }
+            .gallery-img {
+                width: 80px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#events">Events</a>
+        <a href="#contact">Contact</a>
+        <a href="help.html" target="_blank">Help</a>
+    </nav>
+
+    <div id="welcomeBanner">
+        Welcome, user! <span style="color:red; font-weight:bold;">Limited time offer!</span>
+    </div>
+
+    <section id="events">
+        <h2 class="highlight">Upcoming Community Events</h2>
+
+        <table>
+            <caption>Past Community Highlights</caption>
+            <tr>
+                <td><img src="img1.jpg" class="gallery-img" alt="Event 1" title="Music Fest"></td>
+                <td><img src="img2.jpg" class="gallery-img" alt="Event 2" title="Food Drive"></td>
+                <td><img src="img3.jpg" class="gallery-img" alt="Event 3" title="Yoga Session"></td>
+            </tr>
+            <tr>
+                <td><img src="img4.jpg" class="gallery-img" alt="Event 4" title="Book Fair"></td>
+                <td><img src="img5.jpg" class="gallery-img" alt="Event 5" title="Clean-Up Drive"></td>
+                <td><img src="img6.jpg" class="gallery-img" alt="Event 6" title="Art Showcase"></td>
+            </tr>
+        </table>
+
+        <form id="eventForm">
+            <label>Name: <input type="text" name="name" placeholder="Enter your name" required autofocus></label>
+            <label>Email: <input type="email" name="email" placeholder="Enter your email" required></label>
+            <label>Phone: <input type="tel" id="phone"></label>
+            <label>Date: <input type="date" name="eventDate" required></label>
+            <label>Event Type: 
+                <select id="eventType" name="eventType">
+                    <option value="music">Music</option>
+                    <option value="sports">Sports</option>
+                    <option value="workshop">Workshop</option>
+                </select>
+            </label>
+            <label>Message: <textarea id="messageBox"></textarea></label>
+            <output id="formOutput"></output><br>
+            <button type="submit">Register</button>
+            <button type="button" onclick="clearPreferences()">Clear Preferences</button>
+        </form>
+
+        <video id="promoVideo" controls oncanplay="document.getElementById('videoMsg').textContent='Video ready to play';">
+            <source src="promo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <p id="videoMsg"></p>
+
+        <button onclick="findLocation()">Find Nearby Events</button>
+        <p id="locationOutput"></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 City Council</p>
+    </footer>
+
+    <script>
+        document.getElementById('eventForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = this.name.value; // corrected variable name
+    const email = this.email.value;
+    const date = this.eventDate.value;
+    const type = this.eventType.value;
+    const message = document.getElementById('messageBox').value;
+    const output = `Thanks, ${name}! You've registered for a ${type} event on ${date}.`; // corrected template literal
+    document.getElementById('formOutput').textContent = output;
+    localStorage.setItem('userPrefs', JSON.stringify({ name, email, date, type, message }));
+});
+
+function clearPreferences() {
+    localStorage.removeItem('userPrefs');
+    document.getElementById('formOutput').textContent = '';
+}
+
+function findLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+            const { latitude, longitude } = position.coords;
+            document.getElementById('locationOutput').textContent = `Your location: (${latitude.toFixed(2)}, ${longitude.toFixed(2)})`;
+        }, error => { // added error parameter
+            document.getElementById('locationOutput').textContent = 'Unable to retrieve location.';
+        });
+    } else {
+        document.getElementById('locationOutput').textContent = 'Geolocation not supported by your browser.';
+    }
+}
+
+    </script>
+</body>
+</html>

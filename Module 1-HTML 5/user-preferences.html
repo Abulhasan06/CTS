@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Save Event Preferences</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    select, button {
+      padding: 8px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Select Your Preferred Event Type</h2>
+
+  <select id="eventType" onchange="savePreference()">
+    <option value="">-- Select Event --</option>
+    <option value="Music">Music</option>
+    <option value="Sports">Sports</option>
+    <option value="Art">Art</option>
+    <option value="Technology">Technology</option>
+  </select>
+
+  <br><br>
+  <button onclick="clearPreferences()">Clear Preferences</button>
+
+  <script>
+    const eventSelect = document.getElementById('eventType');
+
+    function savePreference() {
+      const selected = eventSelect.value;
+      if (selected) {
+        localStorage.setItem('preferredEvent', selected);
+      }
+    }
+
+    function loadPreference() {
+      const saved = localStorage.getItem('preferredEvent');
+      if (saved) {
+        eventSelect.value = saved;
+      }
+    }
+
+    function clearPreferences() {
+      localStorage.clear();
+      sessionStorage.clear();
+      eventSelect.value = "";
+      alert("Preferences cleared.");
+    }
+
+    loadPreference();
+  </script>
+
+</body>
+</html>

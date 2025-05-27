@@ -1,0 +1,24 @@
+.eventCard {
+  border: 2px solid #0077cc;
+  padding: 20px;
+  margin: 30px 0;
+  background-color: #f4f4f4;
+}
+
+.selected-field {
+  outline: 3px dashed red;
+}
+
+.hidden-box {
+  visibility: hidden;
+  background-color: yellow;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.gone-box {
+  display: none;
+  background-color: pink;
+  padding: 10px;
+  margin-top: 20px;
+}

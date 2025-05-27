@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Feedback</title>
+  <style>
+    #enlargeable {
+      width: 200px;
+      cursor: pointer;
+    }
+    #charCount {
+      font-size: 0.9rem;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Event Feedback</h2>
+  <form>
+    Phone: 
+    <input type="text" id="phone" onblur="validatePhone()" placeholder="e.g. 9876543210">
+    <br>
+    Select Event: 
+    <select id="eventSelect" onchange="showFee()">
+      <option value="">Choose Event</option>
+      <option value="100">Music Night - ₹100</option>
+      <option value="0">Clean Up Drive - Free</option>
+    </select>
+    <p id="feeResult"></p>
+
+    <br>
+    <textarea id="feedbackBox" placeholder="Write feedback..." onkeyup="countChars()"></textarea>
+    <p id="charCount">Characters: 0</p>
+
+    <button type="button" onclick="submitConfirm()">Submit Feedback</button>
+  </form>
+
+  <br>
+  <img src="event-thumb.jpg" id="enlargeable" ondblclick="enlargeImage()" alt="Event Image">
+
+  <script>
+    function validatePhone() {
+      const phone = document.getElementById("phone").value;
+      if (!/^\d{10}$/.test(phone)) {
+        alert("Please enter a valid 10-digit phone number.");
+      }
+    }
+
+    function showFee() {
+      const fee = document.getElementById("eventSelect").value;
+      if (fee !== "") {
+        document.getElementById("feeResult").textContent = `Event Fee: ₹${fee}`;
+      }
+    }
+
+    function submitConfirm() {
+      alert("✅ Feedback submitted. Thank you!");
+    }
+
+    function enlargeImage() {
+      const img = document.getElementById("enlargeable");
+      img.style.width = "400px";
+    }
+
+    function countChars() {
+      const len = document.getElementById("feedbackBox").value.length;
+      document.getElementById("charCount").textContent = `Characters: ${len}`;
+    }
+  </script>
+
+</body>
+</html>
